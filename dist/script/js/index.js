@@ -173,4 +173,44 @@
 			});
 		});
 		
+		
+		
+		
+		
+		
+		/* <div class="mainlist">
+			<a href="#">
+				<img src="http://www.51mkf.com/data/upload/shop/store/goods/3/2018/11/3_05948399459013479_240.jpg" >
+				<p>京造 MFi认证苹果数据线/充电线 支持iphone Xs/Xs max/Xr/X/8/7P/5/6s/SE/ipad air mini 红色 编织线 1.2米</p>
+				<div>
+					<i>¥</i><b>49.00</b>
+				</div>
+			</a>
+		</div> */
+		
+		$.ajax({
+			url:"http://10.31.162.55/mkf/php/taobaodata.php",
+			dataType:"json"
+		}).done(function(data){
+				console.log(1);
+				var strhtml='';
+				$.each(data,function(index,value){
+					strhtml+=`
+					 <div class="mainlist">
+						<a href="details.html?sid=${value.sid}" target="_blank" style="margin:0 6px 12px 0;">
+							<img src="${value.url}">
+							<p>${value.title}</p>
+							<div>
+								<i>¥</i><b>${value.price}</b>
+							</div>
+						</a>
+					 </div>
+					`
+				});
+				$(".xuanran").html(strhtml);
+		  });
+			
+			
+			
+			
 })(jQuery);
